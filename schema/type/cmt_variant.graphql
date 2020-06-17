@@ -1,0 +1,6 @@
+type Variant {
+    sku: String!
+    product_id: Int!
+    count_on_hand: Int!
+    size_str: String!
+}

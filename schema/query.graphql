@@ -1,0 +1,10 @@
+type Query {
+	customerOrders: [CustomerOrder!]
+	customerOrder(number: String!): CustomerOrder!
+	getProductDataOms(id: Int!): Product!
+}
+
+
+type Mutation{
+	setDueTime(voonikOrderNumber: String!, dueTime: Int!): CustomerOrder
+}

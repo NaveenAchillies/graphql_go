@@ -1,0 +1,8 @@
+type Product {
+    name: String!
+    slug: String!
+    count_on_hand: String!
+    seller_code: String!
+    category_name: [String!]!
+    Variants: [Variant!]!
+}

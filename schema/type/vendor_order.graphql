@@ -1,0 +1,4 @@
+type VendorOrder {
+	VoonikOrderNumber: String!
+	CustomerOrderId: Int!
+}

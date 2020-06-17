@@ -1,0 +1,4 @@
+type CustomerOrder {
+	number: String!
+	VendorOrders: [VendorOrder!]!
+}
