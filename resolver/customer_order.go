@@ -2,7 +2,6 @@ package resolver
 
 import (
 	"../swapi"
-	// graphql "github.com/graph-gophers/graphql-go"
 )
 
 type CustomerOrderResolver struct {
