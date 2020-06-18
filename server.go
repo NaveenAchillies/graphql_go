@@ -8,31 +8,39 @@ import (
 	"fmt"
 
 	"./resolver"
-	"./schema"
+	graphqlSchema "./schema"
 	"github.com/graph-gophers/graphql-go"
 )
 
-func main() {
+type JSON = map[string]interface{}
 
-	// c := swapi.NewClient(http.DefaultClient) // TODO: don't use the default client.
-	root := resolver.RootResolver{}
+type ClientQuery struct {
+	OpName    string
+	Query     string
+	Variables JSON
+}
+
+var (
+	root   *resolver.RootResolver
+	schema *graphql.Schema
+)
+
+func init() {
+	root = &resolver.RootResolver{}
 	root.AddClients()
+	schema = graphql.MustParseSchema(graphqlSchema.String(), root)
+}
+
+func main() {
+	// c := swapi.NewClient(http.DefaultClient) // TODO: don't use the default client.
 	// root, err := resolver.NewRoot(c)
 	// if err != nil {
 	// 	log.Fatal(err)
 	// }
-
 	// Create the request handler; inject dependencies.
-	schema := graphql.MustParseSchema(schema.String(), &root)
+	// schema := graphql.MustParseSchema(schema.String(), root)
 
 	ctx := context.Background()
-	type JSON = map[string]interface{}
-	type ClientQuery struct {
-		OpName    string
-		Query     string
-		Variables JSON
-	}
-
 	q2 := ClientQuery{
 		OpName: "CustomerOrders",
 		Query: `query CustomerOrders($number: String!) {
