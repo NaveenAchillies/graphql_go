@@ -7,7 +7,11 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
+	"time"
+
+	"github.com/tcnksm/go-httpstat"
 )
 
 type Client struct {
@@ -54,6 +58,10 @@ func (c *Client) NewRequest(ctx context.Context, url string, method string, body
 	r.Header.Add("SkipCsrfCheck", b64.StdEncoding.EncodeToString([]byte("VoonikFramework")))
 	r.Header.Add("VServiceCheck", b64.StdEncoding.EncodeToString([]byte("VNKSRVC")))
 
+	var result httpstat.Result
+	ctx = httpstat.WithHTTPStat(r.Context(), &result)
+	ctx = context.WithValue(ctx, "requestTrace", &result)
+
 	return r.WithContext(ctx), nil
 }
 
@@ -75,6 +83,14 @@ func (c *Client) Do(r *http.Request, v interface{}) (*http.Response, error) {
 			return nil, fmt.Errorf("unable to parse JSON [%s %s]: %v", r.Method, r.URL.RequestURI(), err)
 		}
 	}
+	// Show the results
+	ctx := r.Context()
+	result := ctx.Value("requestTrace").(*httpstat.Result)
+	log.Printf("DNS lookup: %d ms", int(result.DNSLookup/time.Millisecond))
+	log.Printf("TCP connection: %d ms", int(result.TCPConnection/time.Millisecond))
+	log.Printf("TLS handshake: %d ms", int(result.TLSHandshake/time.Millisecond))
+	log.Printf("Server processing: %d ms", int(result.ServerProcessing/time.Millisecond))
+	log.Printf("Content transfer: %d ms", int(result.ContentTransfer(time.Now())/time.Millisecond))
 
 	return resp, nil
 }

@@ -88,7 +88,7 @@ func queryGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "query.graphql", size: 224, mode: os.FileMode(420), modTime: time.Unix(1592410841, 0)}
+	info := bindataFileInfo{name: "query.graphql", size: 224, mode: os.FileMode(420), modTime: time.Unix(1592479635, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -108,7 +108,7 @@ func schemaGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "schema.graphql", size: 46, mode: os.FileMode(420), modTime: time.Unix(1592324458, 0)}
+	info := bindataFileInfo{name: "schema.graphql", size: 46, mode: os.FileMode(420), modTime: time.Unix(1592479635, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -128,7 +128,7 @@ func typeCmt_productGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "type/cmt_product.graphql", size: 160, mode: os.FileMode(420), modTime: time.Unix(1592411445, 0)}
+	info := bindataFileInfo{name: "type/cmt_product.graphql", size: 160, mode: os.FileMode(420), modTime: time.Unix(1592479635, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -148,7 +148,7 @@ func typeCmt_variantGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "type/cmt_variant.graphql", size: 100, mode: os.FileMode(420), modTime: time.Unix(1592407438, 0)}
+	info := bindataFileInfo{name: "type/cmt_variant.graphql", size: 100, mode: os.FileMode(420), modTime: time.Unix(1592479635, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -168,7 +168,7 @@ func typeCustomer_orderGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "type/customer_order.graphql", size: 70, mode: os.FileMode(420), modTime: time.Unix(1592324493, 0)}
+	info := bindataFileInfo{name: "type/customer_order.graphql", size: 70, mode: os.FileMode(420), modTime: time.Unix(1592479635, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -188,7 +188,7 @@ func typeVendor_orderGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "type/vendor_order.graphql", size: 71, mode: os.FileMode(420), modTime: time.Unix(1592324495, 0)}
+	info := bindataFileInfo{name: "type/vendor_order.graphql", size: 71, mode: os.FileMode(420), modTime: time.Unix(1592479635, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
